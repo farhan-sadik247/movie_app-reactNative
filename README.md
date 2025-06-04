@@ -1,50 +1,200 @@
-# Welcome to your Expo app 👋
+# MovieTime
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern React Native mobile application built with Expo that allows users to discover, search, and explore movies. The app features trending movies based on community search patterns, detailed movie information, and a sleek dark-themed interface.
 
-## Get started
+## 📌 Overview
 
-1. Install dependencies
+MovieTime is designed to provide movie enthusiasts with an intuitive way to discover new films and get detailed information about their favorites. The app leverages The Movie Database (TMDB) API for comprehensive movie data and uses Appwrite as a backend to track trending searches, creating a community-driven trending system.
+
+Key capabilities include:
+- Browse popular movies
+- Search through thousands of movies
+- View trending movies based on community searches
+- Access detailed movie information including cast, budget, and reviews
+- Save favorite movies (coming soon)
+- User profiles and personalization (coming soon)
+
+Built using **React Native**, **Expo**, **TypeScript**, and **NativeWind**, the application ensures a smooth, native mobile experience across iOS and Android platforms.
+
+## 🚀 Features
+
+- 🎬 **Movie Discovery**  
+  Browse popular and latest movies with beautiful poster displays and essential information like ratings and release dates.
+
+- 🔍 **Smart Search**  
+  Real-time search functionality with debouncing for optimal performance and user experience.
+
+- 📈 **Community Trending System**  
+  Dynamic trending movies section that tracks what the community searches for most. Uses Appwrite database to store search analytics and displays the top 10 most searched movies with animated ranking badges.
+
+- 📱 **Responsive Design**  
+  Fully responsive interface optimized for various screen sizes using NativeWind (Tailwind CSS for React Native).
+
+- 🎭 **Detailed Movie Info**  
+  Comprehensive movie details including synopsis, cast, budget, revenue, production companies, and user ratings.
+
+- 🌙 **Dark Theme**  
+  Beautiful dark-themed interface with purple accent colors for an immersive viewing experience.
+
+- 🚀 **Tab Navigation**  
+  Intuitive bottom tab navigation with custom animated tab indicators.
+
+## 🛠️ Tech Stack
+
+- **Frontend** – React Native with Expo
+- **Language** – TypeScript
+- **Styling** – NativeWind (Tailwind CSS for React Native)
+- **Navigation** – Expo Router
+- **API** – The Movie Database (TMDB) API
+- **Backend** – Appwrite (for trending analytics)
+- **State Management** – Custom hooks with React hooks
+
+## 🛠️ Installation Guide
+
+This project requires Node.js and either an iOS simulator, Android emulator, or physical device for testing.
+
+### 📦 Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or above recommended)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) 
+- [Expo Go](https://expo.dev/client) app on your mobile device (for testing)
+- iOS Simulator (Mac only) or Android Studio (for emulators)
+- TMDB API key from [The Movie Database](https://www.themoviedb.org/settings/api)
+- Appwrite project setup (optional, for trending features)
+
+### 🚀 Local Setup
+
+1. **Clone the Repository**
 
    ```bash
-   npm install
+   $ git clone https://github.com/farhan-sadik247/movie_app-reactNative.git
+   $ cd movieApp
    ```
 
-2. Start the app
+2. **Install Dependencies**
 
    ```bash
-   npx expo start
+   $ npm install
    ```
 
-In the output, you'll find options to open the app in a
+3. **Environment Setup**
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   Create a `.env` file in the root directory:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   ```env
+   EXPO_PUBLIC_MOVIE_API_KEY=your_tmdb_api_key_here
+   EXPO_PUBLIC_APPWRITE_PROJECT_ID=your_appwrite_project_id
+   EXPO_PUBLIC_APPWRITE_DATABASE_ID=your_appwrite_database_id
+   EXPO_PUBLIC_APPWRITE_COLLECTION_ID=your_appwrite_collection_id
+   ```
 
-## Get a fresh project
+4. **Start the Development Server**
 
-When you're ready, run:
+   ```bash
+   $ npx expo start
+   ```
 
-```bash
-npm run reset-project
+5. **Run on Device/Emulator**
+
+   - **Physical Device**: Scan the QR code with Expo Go app
+   - **iOS Simulator**: Press `i` in the terminal
+   - **Android Emulator**: Press `a` in the terminal
+
+## 📱 App Structure
+
+```
+app/
+├── (tabs)/                 # Tab navigation screens
+│   ├── index.tsx          # Home screen with trending and popular movies
+│   ├── search.tsx         # Search functionality
+│   ├── saved.tsx          # Saved movies (placeholder)
+│   └── profile.tsx        # User profile (placeholder)
+├── movies/[id].tsx        # Dynamic movie details screen
+└── _layout.tsx            # Root layout configuration
+
+components/
+├── MovieCard.tsx          # Reusable movie card component
+├── TrendingCard.tsx       # Trending movie card with ranking
+└── SearchBar.tsx          # Search input component
+
+services/
+├── api.ts                 # TMDB API integration
+├── appwrite.ts            # Appwrite backend services
+└── useFetch.ts            # Custom hook for data fetching
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🎨 Design Features
 
-## Learn more
+- **Custom Tab Bar**: Animated tab bar with highlight effects
+- **Gradient Rankings**: Masked gradient numbers for trending movies
+- **Responsive Grid**: Adaptive movie grid layout
+- **Loading States**: Smooth loading indicators and error handling
+- **Image Optimization**: Optimized poster loading with fallbacks
+- **Trending Analytics**: Real-time tracking of search patterns to surface popular movies
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🔥 Trending System
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+The app features a sophisticated trending system that analyzes user search behavior:
 
-## Join the community
+- **Search Tracking**: Every search query is logged with the selected movie
+- **Popularity Ranking**: Movies are ranked by search frequency
+- **Real-time Updates**: Trending list updates dynamically based on community activity
+- **Visual Indicators**: Gradient-masked ranking numbers (1-10) for trending movies
+- **Debounced Analytics**: Search tracking is optimized to avoid spam and ensure accurate data
 
-Join our community of developers creating universal apps.
+The trending algorithm prioritizes recent searches while maintaining historical data, creating a balanced view of both current and sustained popularity.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 🔧 Configuration
+
+### TMDB API Setup
+1. Create an account at [TMDB](https://www.themoviedb.org/)
+2. Navigate to Settings > API
+3. Generate an API key
+4. Add the key to your environment variables
+
+### Appwrite Setup (Optional)
+1. Create an [Appwrite](https://appwrite.io/) project
+2. Set up a database and collection for trending movies
+3. Configure the collection with the following attributes for the trending system:
+   - `searchTerm` (string) - The search query that led to the movie
+   - `movie_id` (integer) - TMDB movie ID
+   - `title` (string) - Movie title
+   - `count` (integer) - Number of times this movie was searched
+   - `poster_url` (string) - Movie poster URL for display
+
+## 🚀 Building for Production
+
+### Android
+```bash
+$ npx expo build:android
+```
+
+### iOS
+```bash
+$ npx expo build:ios
+```
+
+### Using EAS Build (Recommended)
+```bash
+$ npx eas build --platform all
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [The Movie Database (TMDB)](https://www.themoviedb.org/) for providing the movie data API
+- [Expo](https://expo.dev/) for the amazing React Native development platform
+- [NativeWind](https://www.nativewind.dev/) for bringing Tailwind CSS to React Native
+- [Appwrite](https://appwrite.io/) for backend services
+- [JavaScript Mastery](https://www.youtube.com/watch?v=f8Z9JyB2EIE) for basic information about ReactNative
