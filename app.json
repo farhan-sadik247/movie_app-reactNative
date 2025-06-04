@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "movieTime",
-    "slug": "movieApp",
+    "slug": "movieapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/images/logo.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.farhansadik2319.movieApp"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +38,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d08ad30d-18ec-4f9a-8ab9-925c89dfd260"
+      }
+    },
+    "owner": "farhansadik2319"
   }
 }
